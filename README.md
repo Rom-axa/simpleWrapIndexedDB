@@ -1,4 +1,6 @@
-# Simple wrap for IndexDB
+# Simple wrap for IndexedDB
+
+Promise based wrapper for IndexedDB provide easiest way for interacting with database
 
 ```ts
 import Connection from 'simpleIndexDb';
@@ -54,9 +56,12 @@ const STORAGES = [
 })();
 ```
 
+# Connection
+**Connection** provide simple promise based feature for connecting to db and can automatic detect current version, increase it and create new storages
+
 # Create database
 
-Connection.create method will create db with **databaseName** if it is not exists.
+**Connection.create** method will create db with **databaseName** if it is not exists.
 
 If database already exists **Connection.create** will check diff of it current storages with list in second argument **storagesList**. In case of new storages
 which are in **storagesList** but not exists in current db - method will increase
@@ -66,3 +71,37 @@ db version and create new storages. If diff show nothing - method just make conn
 Connection.create(databaseName, storagesList)
 ```
 
+# Storage
+
+ **Database.storage** method return an instance of class **Storage**
+which provide simple way for manipulating data from
+IDBObjectStore
+
+# Query builder
+
+Storage implemented **DatabaseStorageInterface** all methods of which will return **QueryBuilderInterface**.
+For executing query you need to call method **QueryBuilderInterface.get**
+
+```ts
+const database = new Database(connection);
+
+const usersGenerator = async function*(){
+    do {
+        const limit = 5;
+        let offset = 0;
+
+        let result = await database.storage(`users`)
+            .filter(user => user.age >= 18 && user.sex === `male`)
+            .limit(limit)
+            .offset(offset)
+            .get();
+        
+        yield result.items;
+        offset += limit;
+    } while (result.qty === limit);
+};
+
+for (let users of usersGenerator()) {
+    console.log(users);
+}
+```
