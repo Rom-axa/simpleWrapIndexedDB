@@ -7,7 +7,7 @@ type StoragesList = {
     [name: string]: DatabaseStorageInterface 
 }
 
-export default class Database implements DatabaseInterface{
+export default class Database implements DatabaseInterface {
     private connection: Connection;
     private storages: StoragesList = {};
 
