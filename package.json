@@ -1,6 +1,6 @@
 {
   "name": "simple-wrap-indexed-db",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Promise based wrapper for IndexedDB provide easiest way for interacting with database",
   "main": "./index.js",
   "exports": "./index.js",
@@ -23,8 +23,7 @@
     "webpack-cli": "^4.7.2",
     "webpack-dev-server": "^4.7.3"
   },
-  "dependencies": {
-  },
+  "dependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Rom-axa/simpleWrapIndexedDB.git"
