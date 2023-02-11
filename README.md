@@ -3,8 +3,8 @@
 Promise based wrapper for IndexedDB provide easiest way for interacting with database
 
 ```ts
-import Connection from 'simpleIndexedDb';
-import Database from 'simpleIndexedDb';
+import Connection from 'simple-wrap-indexed-db';
+import Database from 'simple-wrap-indexed-db';
 
 const DB_NAME = `my_first_db`;
 const STORAGES = [
