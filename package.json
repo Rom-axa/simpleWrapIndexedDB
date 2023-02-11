@@ -1,6 +1,6 @@
 {
   "name": "simple-wrap-indexed-db",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Promise based wrapper for IndexedDB provide easiest way for interacting with database",
   "main": "./dist/main.js",
   "exports": "./dist/main.js",
